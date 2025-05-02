@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新山宽柔中学电脑协会</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .candidate-card {
+            background: rgba(40, 40, 40, 0.7);
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .candidate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(202, 202, 202, 0.5);
+            background: rgba(166, 166, 166, 0.8);
+        }
+        .candidate-image {
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .header-gradient {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7), rgba(0,0,0,0.5), transparent);
+            padding-top: 6rem;
+            padding-bottom: 2.5rem;
+        }
+        .footer-gradient {
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.7), rgba(0,0,0,0.5), transparent);
+            padding-bottom: 2rem;
+        }
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        .page-subtitle {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        }
+        .highlight-text {
+            color: #60a5fa;
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), white, rgba(255, 255, 255, 0));
+        }
+        .declaration-text {
+            font-style: italic;
+            border-left: 3px solid #60a5fa;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3d3d3d;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a4a4a;
+        }
+        .card {
+            background-color: #111;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(100, 100, 100, 0.2);
+        }
+        .avatar {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #444;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        .header-line {
+            height: 2px;
+            background: linear-gradient(90deg, rgba(100,100,100,0) 0%, rgba(200,200,200,1) 50%, rgba(100,100,100,0) 100%);
+        }
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .position-badge {
+            background-color: #333;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #555;
+        }
+        .quote {
+            position: relative;
+            font-style: italic;
+            padding: 10px 15px;
+            border-left: 3px solid #555;
+            background-color: #1a1a1a;
+        }
+        .quote:before {
+            content: '"';
+            font-size: 2em;
+            color: #555;
+            position: absolute;
+            left: 5px;
+            top: -5px;
+        }
+        .footer {
+            background-color: #111;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- 页面头部 -->
+    <header class="header-gradient text-center">
+        <h1 class="page-subtitle mt-4 text-gray-200">2025</h1>
+        <h2 class="page-title text-white">新山宽柔中学电脑协会</h2>
+        <h3 class="page-subtitle mt-4 text-gray-200">理事改选</h3>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- 候选人介绍标题 -->
+        <div class="text-center mb-16 mt-8">
+            <h2 class="text-3xl font-bold section-title">候选人介绍</h2>
+            <p class="text-gray-400 mt-6 max-w-2xl mx-auto">
+                了解各位竞选者的背景、理念与承诺，为电脑协会的未来做出明智的选择
+            </p>
+        </div>
+
+        <!-- 候选人网格 -->
+    <div class="content-wrapper px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 卢文恩 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="images/luwenen.png" alt="卢文恩" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">卢文恩</h3>
+                    <p class="text-gray-400 mb-4">高二理5</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">纪律副会长</span>
+                            <span class="position-badge">活动副会长</span>
+                            <span class="position-badge">查账</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "我要竞选纪律副是因为我觉得我十分公平公正 而且最后一次竞选了希望可以有一点贡献。当活动副的话是因为我经常当各种活动的筹委 对活动的流程比较熟悉。最后 我要选查账是因为我当过了一年的财政 对关于这类的事情比较熟悉"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 戴宏展 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/247c08b2-8f85-4c30-a361-8893ce5b2a7b_wm" alt="戴宏展" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">戴宏展</h3>
+                    <p class="text-gray-400 mb-4">高二文商9</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">康乐</span>
+                            <span class="position-badge">总务</span>
+                            <span class="position-badge">文书</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "我从初中开始有担任理事的想法，所以我选择先参加诸多活动的筹委来增加经验。现在我认为我的资历已经足够，加上我现在已经高二想要为社团贡献最后一份精力，让自己不会因此而包有遗憾毕业。"
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 罗彦朗 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/6b5e120b-0153-41d1-b260-b1f6ec529eb8_wm" alt="罗彦朗" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">罗彦朗</h3>
+                    <p class="text-gray-400 mb-4">初三2</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">研教</span>
+                            <span class="position-badge">总务</span>
+                            <span class="position-badge">快讯</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "我从初一就开始积极参与电协的比赛，活动，等。现在我初三了，想要对团做出贡献。我也想利用这个机会来培养我领导的能力，对未来做准备。希望大家能给我一次机会，让我对团贡献。"
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+     <!-- 陈俊源 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/fe54d6c2-7b7c-48b1-b20d-a427eefc448e_wm" alt="陈俊源" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">陈俊源</h3>
+                    <p class="text-gray-400 mb-4">高一理2</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">研教</span>
+                            <span class="position-badge">活动副会长</span>
+                            <span class="position-badge">纪律副会长</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "旧生竞选时常言道，人生是要往高处走，不过我通常走三步就想找电梯，因为效率才是王道。正如在电脑协会，我虽然资质不是最狂的，但靠着勤力、细心和热情，一步步从零编出教材、带出成果，还拿过Rero Micro的奖项。
+今天，我希望能成为你们的研教，纪律副会长或活动副会长，不是为了抬高自己，而是为了托起更多人的成长。
+副会长不仅是职位，更是一份责任——要耐心听大家的声音，要带动协会向更专业、更团结、更精彩的方向前进。
+我年年竞选年年输，有点凄惨，所以请给我一次机会，让我们一起，不靠电梯，也能走到属于我们的高峰。"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 谢杰恩 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/247c08b2-8f85-4c30-a361-8893ce5b2a7b_wm" alt="谢杰恩" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">谢杰恩</h3>
+                    <p class="text-gray-400 mb-4">高一文商12</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">财政</span>
+                            <span class="position-badge">文书</span>
+                            <span class="position-badge">快讯</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "大家好，我是谢杰恩，今天竞选电脑学会的财政、文书和快讯职位。我一直对电脑有浓厚的兴趣，也相信自己有足够的细心和责任感去胜任学会的工作。无论是处理财务、整理资料，还是撰写快讯，我都会以认真的态度，全力以赴，做到最好。我希望能在这个团队里贡献自己的力量，也希望和大家一起把电脑学会办得更有活力、更有温度。请大家支持我，谢谢！"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 黄锴恩 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/fe54d6c2-7b7c-48b1-b20d-a427eefc448e_wm" alt="黄锴恩" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">黄锴恩</h3>
+                    <p class="text-gray-400 mb-4">高一理2</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">康乐</span>
+                            <span class="position-badge">总务</span>
+                            <span class="position-badge">快讯</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "如果当任康乐职位，这个职位要必须要以各种想法来想出一个游戏，然后这个游戏必须可以满足每一个人，可以把他们弄得开心，也可以给他们一个美好的回忆，给他们的烦恼放一边，享受当下。即使弄不开心，就做到他们满足为止。我希望我可以达到这个想法，这是因为有时候可看到康乐活动有一些问题，我希望可以去改善这个问题。
+即使没有当上，总务也是可以，可以去尝试做新的职位，可以去学新的东西，提升经验。如果两个职位没有当上，我也可以做快讯。我希望可以以网络的力量来传出科技的发达及信息。"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 李家仪 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/a8fcc6da-b0ff-43a0-8dc2-e1703f3cfbf8_wm" alt="李家仪" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">李家仪</h3>
+                    <p class="text-gray-400 mb-4">高一文商6</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">财政</span>
+                            <span class="position-badge">康乐</span>
+                            <span class="position-badge">研教</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "嗨，我这次竞选的职业有三个，一是财政，二是康乐，三是快讯，首先我做财政的原因是我是有有做过2年财政的经验，但是是在班上罢了，然后想尝试一下在团体当财政的体验，如果我担任这个职位，我将尽我所能执行义务。然后第二的话我想要做的职位是康乐，我希望我们团是充满欢乐的，就大概每一二个月可以进行一次康乐活动或者与别的团体一起进行康乐，让大家放松，让大家觉得我们团不只是死学习，而是充满乐趣的。然后研教的话，我电脑知识不是很好，但是我会尽我所能去完成这份工作，去教好新生"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 高子健 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/6b5e120b-0153-41d1-b260-b1f6ec529eb8_wm" alt="高子健" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">高子健</h3>
+                    <p class="text-gray-400 mb-4">高二文商1</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">研教</span>
+                            <span class="position-badge">活动副会长</span>
+                            <span class="position-badge">正会长</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "很快我在这个团已经5年了也当了2年理事，最后一年我也想继续当理事。这次我竞选的职位也是研教因为我希望可以让新生学到更多不同的东西，也希望这个团可以有进步而不是只是单纯来摆烂。最重要的是这是个很好的锻炼机会可以让我学习到不同的东西。"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 殷文轩 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/247c08b2-8f85-4c30-a361-8893ce5b2a7b_wm" alt="殷文轩" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">殷文轩</h3>
+                    <p class="text-gray-400 mb-4">高二理1</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">纪律副会长</span>
+                            <span class="position-badge">正会长</span>
+                            <span class="position-badge">活动副会长</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "我担任理事已经有两年的经验，在这期间我也不断地辅助各会长的工作，对会长的职务也有一定的了解。在我当选后，我会着手打造更认真、更有纪律的电脑协会。我相信我的能力能够承担这个重大的责任，带领电协创造更好的未来。希望大家能够投我一票，让我用实际行动证明我自己，谢谢。"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 卢正阳 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/fe54d6c2-7b7c-48b1-b20d-a427eefc448e_wm" alt="卢正阳" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">卢正阳</h3>
+                    <p class="text-gray-400 mb-4">高一文商7</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">总务</span>
+                            <span class="position-badge">快讯</span>
+                            <span class="position-badge">文书</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "大家好，我是卢正阳，今天竞选社团理事中的总务一职。总务是社团活动中重要且关键的角色，我有责任心、执行能力强，善于安排事务，细致处理每一份工作。如果有幸当选，我将以务实的态度，积极协助及筹办社团活动，确保资源使用适当，提升整体效率。希望大家能支持我，让我们一起让这个社团更棒。"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 张恒薫 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/247c08b2-8f85-4c30-a361-8893ce5b2a7b_wm" alt="张恒薫" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">张恒薫</h3>
+                    <p class="text-gray-400 mb-4">高二理5</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">正会长</span>
+                            <span class="position-badge">活动副会长</span>
+                            <span class="position-badge">纪律副会长</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "作为现任总务，我深知协会运作的每一个细节，也积累了丰富的管理经验。如果有幸成为下一任会长，我将致力于加强技术交流，组织更多有趣且实用的活动，让协会成为一个真正能让大家学习、成长、发挥所长的平台。请支持我，一起让电脑协会迈向更精彩的未来！"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 蔡陈礼詺 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/6b5e120b-0153-41d1-b260-b1f6ec529eb8_wm" alt="蔡陈礼詺" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">蔡陈礼詺</h3>
+                    <p class="text-gray-400 mb-4">高二理1</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">正会长</span>
+                            <span class="position-badge">活动副会长</span>
+                            <span class="position-badge">纪律副会长</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "hi! 我是高二理1的蔡陈礼詺 
+ok老生常谈，搬回去年的话人总是要往高处走的，我当了一年的副会长，那当然是想继续去往上竞争，争一争正会长这一职位。
+在当副会长期间，写了各种各样的计划书，筹办了一些比赛，当了校庆筹委，之后还要办2025的校庆展览以及各种比赛。也去比了各种比赛，有胜有败。哇，多姿多彩、生活充实，电脑协会承载了我大部分的校园回忆。我认为以我研教和副会长的经验以及能力，我是足够了解我们团的运作以及身为会长的责任的，并能够胜任这个位置的。
+当然无可否认换成星期五会课后我们团遇到了许多转型问题，我认为我有能力去让电脑协会的运作更加适应星期五团课甚至变得更好。我希望可以创造一个更好的电协，让电协更加精彩。"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 陈泽昊 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/fe54d6c2-7b7c-48b1-b20d-a427eefc448e_wm" alt="陈泽昊" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">陈泽昊</h3>
+                    <p class="text-gray-400 mb-4">初三13</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">财政</span>
+                            <span class="position-badge">总务</span>
+                            <span class="position-badge">快讯</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "我竞选理事是因为我其实也没事做啦，然后你们也是讲积极所以我就竞选。然后其实也是要给成绩单看起来好一点其实。我也是想要体验当理事的经验因为我小学到现在也没有什么经验。所以我觉得这个是一个很好的机会来体验看当理事是怎样的。"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 林植讯 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/fe54d6c2-7b7c-48b1-b20d-a427eefc448e_wm" alt="陈俊源" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">林稙讯</h3>
+                    <p class="text-gray-400 mb-4">高一理4</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">资料</span>
+                            <span class="position-badge">财政</span>
+                            <span class="position-badge">总务</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "我今年之所以会参选当理事的原因主要也是因为我认为我能够胜任这些职位，例如做会员手册的设计，计算账单，搬椅子等。第二也是因为我想为我的社团献一份力，毕竟在不快点行动，我就要高二了，到时候可能会很忙，而且就算到了高三，我也要应付UEC，会更忙，所以我打算参选理事，希望大家能支持我，投出那神圣的一票吧！"
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 蔡兴荣 -->
+            <div class="card rounded-lg overflow-hidden p-6">
+                <div class="flex flex-col items-center">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_generated/6b5e120b-0153-41d1-b260-b1f6ec529eb8_wm" alt="蔡兴荣" class="avatar mb-4">
+                    <h3 class="text-xl font-bold mb-1">蔡兴荣</h3>
+                    <p class="text-gray-400 mb-4">高二文商2</p>
+                    
+                    <div class="w-full">
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选志愿职位</h4>
+                        <div class="mb-4">
+                            <span class="position-badge">研教</span>
+                            <span class="position-badge">文书</span>
+                            <span class="position-badge">总务</span>
+                        </div>
+                        
+                        <h4 class="text-gray-300 mb-2 font-semibold">竞选宣言</h4>
+                        <div class="quote text-gray-300 text-sm mb-2">
+                            "大家好，我是蔡兴荣。在接下来的学年中，我希望能够在研教、文书或快讯这三个职位之一，为社团的发展和大家的学习生活贡献自己的力量。
+选研教，是因为我已经当过一年研教，已经有相关经验。相信再当一次研教可以能给初一会员更多有关电脑的知识。然后选文书，希望能帮忙整理goggle drive，献出自己的一份力量，也提升自己的数据管理能力。最后选择当快讯，是因为自己有当快讯的经验，相信自己可以运营好电协的IG，给大家优质的内容。
+如果选中我，我必将投入其中，为大家创造更美好的电协，谢谢。"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 页脚 -->
+    <footer class="footer-gradient mt-16 pt-12 text-center">
+        <div class="container mx-auto px-4">
+            <div class="text-xl font-semibold mb-4 text-blue-400">电脑协会</div>
+            <div class="text-gray-400 text-sm">© 2025 电脑协会改选主席</div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的页面加载动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.candidate-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                }, 100 * index);
+            });
+        });
+    </script>
+</body>
+</html>
